@@ -1,75 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Marks Viewer</title>
+  <title>Marks Portal</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    input, button {
-      padding: 10px; font-size: 16px; margin-right: 10px;
+    body {
+      font-family: Arial;
+      text-align: center;
+      padding-top: 100px;
     }
-    button {
-      cursor: pointer; border-radius: 6px; border: 1px solid #444;
+    a {
+      display: inline-block;
+      margin: 20px;
+      padding: 20px 40px;
+      font-size: 20px;
+      text-decoration: none;
+      color: white;
+      background: #0077cc;
+      border-radius: 10px;
     }
-    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
-    th { background: #f2f2f2; }
-    #message { color: red; margin-top: 10px; font-weight: bold; }
+    a:hover { background: #005fa3; }
   </style>
 </head>
 <body>
 
-<h2>Search Marks by SAPID</h2>
+<h1>Student Marks Portal</h1>
 
-<input type="text" id="sapidInput" placeholder="Enter SAPID">
-<button onclick="searchSAPID()">Search</button>
-
-<div id="message"></div>
-<table id="marksTable"></table>
-
-<script>
-let rows = [];
-
-async function loadCSV() {
-  const response = await fetch("marks.csv");
-  const text = await response.text();
-  rows = text.trim().split("\n").map(r => r.split(","));
-}
-
-function searchSAPID() {
-  const sapid = document.getElementById("sapidInput").value.trim();
-  const message = document.getElementById("message");
-  const table = document.getElementById("marksTable");
-
-  if (!sapid) {
-    message.textContent = "Please enter a SAPID.";
-    table.innerHTML = "";
-    return;
-  }
-
-  message.textContent = "";
-  const header = rows[0];
-
-  const match = rows.slice(1).find(row => row[0] === sapid);
-
-  if (!match) {
-    message.textContent = "No record found!";
-    table.innerHTML = "";
-    return;
-  }
-
-  // Display only this student
-  table.innerHTML = `
-    <thead>
-      <tr>${header.map(h => `<th>${h}</th>`).join("")}</tr>
-    </thead>
-    <tbody>
-      <tr>${match.map(c => `<td>${c}</td>`).join("")}</tr>
-    </tbody>
-  `;
-}
-
-loadCSV();
-</script>
+<a href="ia.html">Internal Assessment (IA)</a>
+<a href="endsem.html">End Semester</a>
 
 </body>
 </html>

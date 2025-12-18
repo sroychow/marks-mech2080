@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ENDSEM Marks</title>
+  <title>IA Marks</title>
   <style>
     body { font-family: Arial; padding: 30px; }
     input, button {
@@ -23,7 +23,7 @@
 </head>
 <body>
 
-<h2>ENDSEM Marks</h2>
+<h2>Internal Assessment (IA) Marks</h2>
 
 <input id="sapid" placeholder="Enter SAPID">
 <button onclick="search()">Search</button>
@@ -35,7 +35,7 @@
 <script>
 let data = [];
 
-Papa.parse("endsem.csv", {
+Papa.parse("ia.csv", {
   download: true,
   complete: res => data = res.data
 });
